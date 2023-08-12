@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBN Clan - Fortnite Legends</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e2124;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        #clan-icon {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            display: block;
+        }
+        #profile {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="profile">
+        <img id="member-picture" src="" alt="Random Member's Profile Picture">
+        <p id="member-name"></p>
+    </div>
+    <h1>Welcome to BBN Clan</h1>
+    <img id="clan-icon" src="https://cdn.discordapp.com/attachments/1134910933387464755/1134911827462066296/W6brygJN.png" alt="BBN Clan Icon">
+    <p>Prepare to be dominated by the mightiest warriors of BBN Clan! We're the butt booty naked legends of Fortnite, bringing both humor and skill to the battlefield.</p>
+    <p>Join us for epic victories, outrageous moments, and hilarious banter. We might be naked, but we sure know how to dress up our Victory Royales!</p>
+    <p>Get ready for some cheeky fun with BBN Clan!</p>
+    <p>Follow us on social media for the latest naked shenanigans:</p>
+    <p>Twitter: @AlperSocial</p>
+
+    <a href="https://alper.boo" target="_blank"><button>click for cool website</button></a>
+
+    <script>
+        // List of clan members
+        const members = [
+            { name: "0k1", picture: "https://cdn.discordapp.com/avatars/98926837412945920/3d84f36dfb05837184baf3601ed0d798.webp?size=1024&width=0&height=256" },
+            { name: "AlperSocial", picture: "https://cdn.discordapp.com/avatars/467268648092827648/492194f9e2632f07d0e23f9288b6bf85.webp?size=1024&width=0&height=256" },
+            { name: "huggo", picture: "https://cdn.discordapp.com/avatars/1109383317280796713/8bb6e1c94435e3836c9d003226a19d1c.webp?size=1024&width=0&height=256" },
+            { name: "elek", picture: "https://cdn.discordapp.com/avatars/743220246537699389/ba5da54fccc55ef7014da481b723cd9d.webp?size=1024&width=0&height=256" },
+            { name: "flowers", picture: "https://cdn.discordapp.com/avatars/378957627926904832/a_ab216cbcc69f57ac6f6b5c96d9489a07.gif?size=1024&width=0&height=256" },
+            { name: "blade", picture: "https://cdn.discordapp.com/avatars/862737395468206140/ada6406bd85651b3bb96ceba5febb3e1.webp?size=1024&width=0&height=256" },
+            { name: "noix", picture: "https://cdn.discordapp.com/avatars/280078014677647360/de2cad288697b147033b31d4709995b8.webp?size=1024&width=0&height=256" },
+            { name: "Trembling", picture: "https://cdn.discordapp.com/avatars/553776059363885066/a_ad4d7a943e21f14e9e647ae9eee9ba8b.gif?size=1024&width=0&height=256" },
+            { name: "Sec", picture: "https://cdn.discordapp.com/avatars/1009483828001263697/06b9bb966fc3925d09736df30057c9fd.webp?size=1024&width=0&height=256" },
+            { name: "rupaw", picture: "https://cdn.discordapp.com/avatars/701774179573432360/021278ab6f7908283ff8833e6e10ae38.webp?size=1024&width=0&height=256" },
+            // Add more members here
+        ];
+
+        // Function to get a random member
+        function getRandomMember() {
+            return members[Math.floor(Math.random() * members.length)];
+        }
+        // Update the profile with a random member
+        const member = getRandomMember();
+        document.getElementById("member-picture").src = member.picture;
+        document.getElementById("member-name").textContent = member.name;
+    </script>
+</body>
+</html>
