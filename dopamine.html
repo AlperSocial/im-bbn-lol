@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBN Clan - Fortnite Legends</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e2124;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        #header {
+            padding: 20px;
+        }
+        #clan-icon {
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            display: block;
+        }
+        #content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #join-button {
+            display: block;
+            margin: 20px auto;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #profile {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        #member-name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        #tic-tac-toe {
+            margin-top: 50px;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+            grid-gap: 5px;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: #ff8000;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .cell[data-value="X"],
+        .cell[data-value="O"] {
+            pointer-events: none;
+        }
+        /* Add styling for the Subway Surfers section */
+        #subway-surfers {
+            margin-top: 50px;
+        }
+        #subway-surfers h2 {
+            color: #ff8000;
+        }
+        /* Adjust video size */
+        #subway-surfers video {
+            max-width: 100%;
+            max-height: 360px;
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <p>Enjoy the dopamine! (for legal reasons this is not a thing for drugs. i am joking by saying that this is dopamine)</p>
+        <div id="profile">
+            <img id="member-picture" src="" alt="Random Member's Profile Picture">
+            <p id="member-name"></p>
+        </div>
+    </div>
+    <div id="subway-surfers">
+        <h2>Subway Surfers Gameplay (dopamine)</h2>
+        <!-- Use the video element to play the video file -->
+        <video width="560" height="315" controls>
+            <source src="subway_surfers.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div id="tic-tac-toe">
+        <h2>Tic Tac Toe - Play against the Bot</h2>
+        <div class="board" id="board">
+            <div class="cell" data-row="0" data-col="0"></div>
+            <div class="cell" data-row="0" data-col="1"></div>
+            <div class="cell" data-row="0" data-col="2"></div>
+            <div class="cell" data-row="1" data-col="0"></div>
+            <div class="cell" data-row="1" data-col="1"></div>
+            <div class="cell" data-row="1" data-col="2"></div>
+            <div class="cell" data-row="2" data-col="0"></div>
+            <div class="cell" data-row="2" data-col="1"></div>
+            <div class="cell" data-row="2" data-col="2"></div>
+        </div>
+        <div id="result"></div>
+    </div>
+    <script>
+        const members = [
+          { name: "0k1", picture: "0k1.webp" },
+          { name: "AlperSocial", picture: "alper.webp" },
+          { name: "huggo", picture: "huggo.webp" },
+          { name: "elek", picture: "elek.webp" },
+          { name: "flowers", picture: "flowers.gif" },
+          { name: "blade", picture: "blade.webp" },
+          { name: "noix", picture: "noix.webp" },
+          { name: "Trembling", picture: "trembling.gif" },
+          { name: "Sec", picture: "sex.webp" },
+          { name: "6odhood", picture: "6odhood.gif" },
+          { name: "Glazzing", picture: "Glazzing.webp" },
+          { name: "Hollywood", picture: "Hollywood.webp" },
+          { name: "MN5", picture: "MN5.webp" },
+          { name: "sixx", picture: "sixx.webp" },
+          { name: "xeno.", picture: "xeno..gif" },
+        ];
+
+        function getRandomMember() {
+            return members[Math.floor(Math.random() * members.length)];
+        }
+
+        const member = getRandomMember();
+        document.getElementById("member-picture").src = member.picture;
+        document.getElementById("member-name").textContent = member.name;
+
+        // Tic Tac Toe game logic
+        const board = document.getElementById("board");
+        const cells = document.querySelectorAll(".cell");
+        const result = document.getElementById("result");
+
+        let currentPlayer = "X";
+        let gameOver = false;
+
+        function checkWinner() {
+            const winningCombos = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+                [0, 4, 8], [2, 4, 6] // Diagonals
+            ];
+
+            for (const combo of winningCombos) {
+                const [a, b, c] = combo;
+                if (cells[a].dataset.value && cells[a].dataset.value === cells[b].dataset.value && cells[a].dataset.value === cells[c].dataset.value) {
+                    cells[a].style.backgroundColor = "#ff0000"; // Highlight winning cells
+                    cells[b].style.backgroundColor = "#ff0000";
+                    cells[c].style.backgroundColor = "#ff0000";
+                    return cells[a].dataset.value;
+                }
+            }
+
+            if ([...cells].every(cell => cell.dataset.value)) {
+                return "draw"; // Draw when all cells are filled
+            }
+
+            return null; // No winner yet
+        }
+
+        function botMove() {
+            if (gameOver) return;
+            const emptyCells = [...cells].filter(cell => !cell.dataset.value);
+            if (emptyCells.length === 0) return;
+
+            const randomIndex = Math.floor(Math.random() * emptyCells.length);
+            const cell = emptyCells[randomIndex];
+            cell.dataset.value = "O";
+            cell.textContent = "O";
+            cell.style.pointerEvents = "none"; // Prevent further moves on this cell
+            currentPlayer = "X"; // Switch back to the player
+
+            const winner = checkWinner();
+            if (winner === "O") {
+                result.textContent = "Bot wins!";
+                gameOver = true;
+            } else if (winner === "draw") {
+                result.textContent = "It's a draw!";
+                gameOver = true;
+            }
+        }
+
+        cells.forEach(cell => {
+            cell.addEventListener("click", () => {
+                if (cell.dataset.value || gameOver) return; // Cell is already filled or game over
+                cell.dataset.value = currentPlayer;
+                cell.textContent = currentPlayer;
+                cell.style.pointerEvents = "none"; // Prevent further moves on this cell
+
+                const winner = checkWinner();
+                if (winner === currentPlayer) {
+                    result.textContent = `Player ${currentPlayer} wins!`;
+                    gameOver = true;
+                } else if (winner === "draw") {
+                    result.textContent = "It's a draw!";
+                    gameOver = true;
+                } else {
+                    currentPlayer = "O"; // Switch to the bot
+                    botMove(); // Bot makes a move
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="https://im-bbn.lol">
+<meta name="twitter:title" content="BUTT BOOTY NAKED DOPAMINE">
+<meta name="twitter:description" content="Join our clan now">
+<meta name="twitter:image" content="https://www.im-bbn.lol/logo.png">
