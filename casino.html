@@ -1,14 +1,125 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>BBN CASINO</title>
-     <meta charset="UTF-8" />
-     <meta http-equiv="refresh" content="0; URL=https://discord.gg/mXng2jD9c6" />
-   </head>
-   <body>
-     <p>you are not supposed to see this but uhh you're about to get redirected to the casino.</p>
-   </body>
+<head>
+    <title>BBN Casino</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e2124;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        #header {
+            padding: 20px;
+        }
+        #clan-icon {
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            display: block;
+        }
+        #content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #join-button {
+            display: block;
+            margin: 20px auto;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #profile {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        #member-name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .discord-button {
+            display: inline-block;
+            background-color: #7289da;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+</head>
+<body>
+    <div id="header">
+        <img id="clan-icon" src="IMG_5091.gif" alt="Clan Icon">
+    </div>
+    <div id="content">
+        <h1>Welcome to BBN Casino!</h1>
+        <p>Get ready for an exciting experience at BBN Casino! Join us to test your luck.</p>
+        <h2>About the Game</h2>
+        <p>BBN Casino is a Discord-based casino game centered around the old Roblox revival, Economy-Simulator Reborn. Participants compete to win by selecting random items. The goal is to accumulate the most valuable items and emerge as the ultimate winner.</p>
+        <div id="profile">
+          <img id="member-picture" src="" alt="Random Member's Profile Picture">
+          <p id="member-name"></p>
+        </div>
+        <a id="join-button" class="discord-button" href="YOUR_DISCORD_SERVER_INVITE_LINK">Join BBN Casino</a>
+    </div>
+    <script>
+      const members = [
+          { name: "0k1", picture: "0k1.webp" },
+          { name: "AlperSocial", picture: "alper.webp" },
+          { name: "huggo", picture: "huggo.webp" },
+          { name: "elek", picture: "elek.webp" },
+          { name: "flowers", picture: "flowers.gif" },
+          { name: "blade", picture: "blade.webp" },
+          { name: "noix", picture: "noix.webp" },
+          { name: "Trembling", picture: "trembling.gif" },
+          { name: "Sec", picture: "sex.webp" },
+          { name: "6odhood", picture: "6odhood.gif" },
+          { name: "Glazzing", picture: "Glazzing.webp" },
+          { name: "Hollywood", picture: "Hollywood.webp" },
+          { name: "MN5", picture: "MN5.webp" },
+          { name: "sixx", picture: "sixx.webp" },
+          { name: "xeno.", picture: "xeno..gif" },
+      ];
+
+      function getRandomMember() {
+          return members[Math.floor(Math.random() * members.length)];
+      }
+
+      const member = getRandomMember();
+      document.getElementById("member-picture").src = member.picture;
+      document.getElementById("member-name").textContent = member.name;
+      </script>
+</body>
 </html>
+
 
 <meta name="twitter:card" content="summary_large_image"> 
  <meta name="twitter:site" content="https://im-bbn.lol/casino"> 
